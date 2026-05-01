@@ -17,6 +17,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+
+
+
+
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
@@ -26,9 +30,18 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+
+
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
+
+
+
+app.get("/",(req,res)=>
+{
+  res.send("Welcome to Laundry Management System API");
+});
 
 app.get("/api/health", (req, res) => {
   res.json({ status: "OK" });
@@ -48,9 +61,7 @@ app.use(errorHandler);
 const start = async () => {
   await connectDB();
  
-  app.get("/",(req,res)=>{
-    res.send("Welcome to the Laundry Order Management System API");
-  });
+  
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);
   });
