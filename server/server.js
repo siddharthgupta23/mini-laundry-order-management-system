@@ -51,6 +51,9 @@ const start = async () => {
   app.get("/",(req,res)=>{
     res.send("Welcome to the Laundry Order Management System API");
   });
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
 };
 
 start().catch((error) => {
