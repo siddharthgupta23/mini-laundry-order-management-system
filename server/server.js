@@ -47,8 +47,9 @@ app.use(errorHandler);
 
 const start = async () => {
   await connectDB();
-  app.listen(port, () => {
-    console.log(`Backend running on http://localhost:${port}`);
+ 
+  app.get("/",(req,res)=>{
+    res.send("Welcome to the Laundry Order Management System API");
   });
 };
 
